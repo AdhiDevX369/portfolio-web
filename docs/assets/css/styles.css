@@ -856,12 +856,22 @@ text-align: center;
   .container{
       margin-inline: 1rem;
   }
-  .nav_menu{
+
+  
+  .nav__menu{
       padding-bottom: 4rem;
   }
-  .nav_list{
+  .nav__list{
       gap: 1rem;
   }
+  .nav__link{
+      font-size: var(--smaller-font-size);
+  }
+  .home__title{
+      font-size: var(--h2-font-size);      
+
+    }
+
   .skills__info{
       grid-template-columns: repeat(2,1fr);
   }
