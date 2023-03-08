@@ -1,55 +1,36 @@
+<h1 align="center">Personal Portfolio Website</h1>
+
 <p align="center">
-  <img src="https://img.shields.io/badge/Made%20with-HTML-orange.svg" />
-  <img src="https://img.shields.io/badge/Made%20with-CSS-blue.svg" />
-  <img src="https://img.shields.io/badge/Made%20with-JavaScript-yellow.svg" />
+  <a href="https://github.com/AdithyaBandara/portfolio-web/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/AdithyaBandara/portfolio-web" alt="License"></a>
+  <a href="https://github.com/AdithyaBandara/portfolio-web/issues"><img src="https://img.shields.io/github/issues/AdithyaBandara/portfolio-web" alt="Issues"></a>
+  <a href="https://github.com/AdithyaBandara/portfolio-web/stargazers"><img src="https://img.shields.io/github/stars/AdithyaBandara/portfolio-web" alt="Stars"></a>
+  <a href="https://github.com/AdithyaBandara/portfolio-web/network/members"><img src="https://img.shields.io/github/forks/AdithyaBandara/portfolio-web" alt="Forks"></a>
 </p>
-<h1 align="center">Portfolio Web</h1>
-<p align="center">This is a personal portfolio website created with HTML, CSS, and JavaScript. The website is based on a public template, with modifications made to customize it for my personal use.</p>
+
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0-brightgreen.svg" />
-  <img src="https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg" />
-  <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
+  <strong>This is my personal portfolio website repository, created using HTML, CSS, and JS. The website is built using a public template and showcases my projects, skills, and experiences.</strong>
 </p>
-Table of Contents
-Installation
-Usage
-Contributing
-License
-Installation
-Clone the repository: git clone https://github.com/AdithyaBandara/portfolio-web.git
-Navigate to the project directory: cd portfolio-web
-Open the index.html file in a web browser to view the website.
-Usage
-The website is a showcase of my personal projects and skills. It is intended to provide an overview of my experience and qualifications to potential employers and clients.
 
-To use the website, simply navigate to the URL where it is hosted or open the index.html file in a web browser.
+<p align="center">
+  <a href="#repository-link">Repository Link</a> · 
+  <a href="#usage">Usage</a> · 
+  <a href="#contributing">Contributing</a> · 
+  <a href="#license">License</a>
+</p>
 
-Contributing
-Contributions to the project are welcome. To contribute, please follow these steps:
+## Repository Link
 
-Fork the repository
-Create a new branch: git checkout -b new-feature
-Make your changes and commit them: git commit -m 'Add some feature'
-Push to the branch: git push origin new-feature
-Submit a pull request
-License
-This project is licensed under the MIT license. See the LICENSE file for more details.
+The repository for this website can be found at https://github.com/AdithyaBandara/portfolio-web.
 
-Acknowledgements
-The website is based on the portfolio template by Colorlib, with modifications made to customize it for my personal use.
+## Usage
 
-Contact
-If you have any questions or feedback about the project, feel free to contact me at dammikaekanayaka1980@gmail.com.
+Feel free to use this repository as a template for your own personal portfolio website. You can customize the website with your own projects, skills, and experiences.
 
-FAQ
-How can I customize the website for my own use?
-To customize the website for your own use, simply replace the content in the HTML and CSS files with your own content. You can also modify the JavaScript code to add or remove features as needed.
+## Contributing
 
-Can I use the website template for commercial purposes?
-Yes, the website template is licensed under the MIT license, which allows for commercial use. However, please note that you are responsible for ensuring that your use of the template complies with any applicable laws or regulations.
+Contributions are always welcome! If you have any ideas or suggestions for improvement, please create an issue or submit a pull request. For more information on how to contribute, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Support
-If you need help with the project or encounter any issues, please open a GitHub issue or contact me directly at dammikaekanayaka1980@gmail.com.
+## License
 
-Roadmap
-Future plans for the project include adding more features and improving the design and user experience. Stay tuned for updates!
+This repository is licensed under the [MIT License](LICENSE.md). 
+
