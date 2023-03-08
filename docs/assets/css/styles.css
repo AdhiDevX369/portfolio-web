@@ -852,7 +852,7 @@ text-align: center;
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
-@media screen and (max-width: 340px){
+@media screen and (max-width: 380px){
   .container{
       margin-inline: 1rem;
   }
@@ -884,7 +884,7 @@ text-align: center;
 /* For medium devices */
 @media screen and (min-width: 570px){
   .nav,
-  .nav_menu{
+  .nav__menu{
       width: 380px;
   }
   .nav{
