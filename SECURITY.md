@@ -1,23 +1,18 @@
-Security Policy
-This document outlines the security policy for the portfolio-web repository owned by AdithyaBandara. The goal of this policy is to ensure that vulnerabilities in the code and its dependencies are identified and addressed in a timely manner.
+<h1 align="center">Security Policy</h1>
+<h3>Reporting a Vulnerability</h3>
+If you discover a security vulnerability within this repository, please send an email to Dammika Ekanayaka at Dammikaekanayaka1980@gmail.com. Please do not create a public issue as it could compromise the security of the repository.
 
-Reporting a Vulnerability
-If you discover a security vulnerability in this repository, please submit a report to the project owner at Dammikaekanayaka1980@gmail.com. To ensure that the report is received and addressed promptly, please follow these guidelines:
+Your email should include the following details:
+<ul>
+<li>A brief description of the vulnerability</li>
+<li>Steps to reproduce the vulnerability</li>
+<li>Any additional information that may help in understanding and resolving the issue
+After receiving your email, I will investigate the issue and work to provide a security patch as soon as possible.</li>
+</ul>
+Responsible Disclosure Policy
+I am committed to ensuring the security of this repository and its users. If you discover a security vulnerability, I ask that you please follow the following responsible <ul>disclosure policy:
 
-Provide a detailed description of the vulnerability and how it can be reproduced.
-Include any proof-of-concept code or other evidence that demonstrates the vulnerability.
-Do not publicly disclose the vulnerability until it has been resolved.
-Allow a reasonable amount of time for the project owner to address the issue before disclosing it to others.
-The project owner will acknowledge receipt of your report within 24 hours and will work with you to validate and address the issue as quickly as possible.
-
-Scope
-This security policy applies to the portfolio-web repository owned by AdithyaBandara. The policy covers all code and dependencies contained in the repository.
-
-Vulnerability Response Time
-The project owner will make a best effort to respond to vulnerability reports in a timely manner, and will work to address any issues as quickly as possible. However, response time may vary depending on the complexity and severity of the issue.
-
-Vulnerability Disclosure
-Once a vulnerability has been identified and resolved, the project owner will coordinate with the reporter to determine an appropriate timeline for disclosure. This may include a public announcement of the vulnerability and its resolution.
-
-Acknowledgments
-The project owner would like to thank anyone who reports security vulnerabilities in a responsible and coordinated manner. Your efforts help to improve the security of the project and benefit the entire community.
+  <li>Do not disclose the vulnerability publicly until it has been resolved</li>
+<li>Do not exploit the vulnerability, except to the extent necessary to confirm the existence of the vulnerability and to provide me with the information needed to reproduce and resolve the issue</li></ul>
+Provide me with a reasonable amount of time to resolve the issue before disclosing it to others or publicly discussing it
+<h1 color="	#FAFAD2">I appreciate your help in keeping this repository safe and secure for everyone. Thank you!</h1>
