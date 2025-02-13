@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="5">
+      <animate attributeName="stroke-dasharray" dur="2s" values="0 283;283 283" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" dur="2s" values="0;283" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="5" transform="rotate(180 50 50)">
+      <animate attributeName="stroke-dasharray" dur="2s" values="0 220;220 220" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" dur="2s" values="0;220" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="5">
+      <animate attributeName="stroke-dasharray" dur="2s" values="0 157;157 157" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" dur="2s" values="0;157" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

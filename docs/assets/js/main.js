@@ -155,3 +155,12 @@ sr.reveal(".home_info", {delay:600,origin:"bottom",interval:100})
 sr.reveal(".skills_content:nth-child(1), .contact_content:nth-child(1)", {origin:"left"})
 sr.reveal(".skills_content:nth-child(2), .contact_content:nth-child(2)", {origin:"right"})
 sr.reveal(".qualification_content, .services_card", {interval:100})
+
+/*=============== LOADER ===============*/
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.loader');
+    loader.classList.add('loader--hidden');
+    loader.addEventListener('transitionend', () => {
+        document.body.removeChild(loader);
+    });
+});
