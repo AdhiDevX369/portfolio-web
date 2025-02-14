@@ -53,6 +53,144 @@
   }
 }
 
+/* Adjusting base font sizes for very small devices */
+@media screen and (max-width: 320px) {
+  :root {
+    --biggest-font-size: 1.5rem;
+    --h1-font-size: 1.25rem;
+    --h2-font-size: 1rem;
+    --h3-font-size: 0.875rem;
+    --normal-font-size: 0.813rem;
+    --small-font-size: 0.75rem;
+    --smaller-font-size: 0.688rem;
+    --tiny-font-size: 0.625rem;
+  }
+
+  .container {
+    margin-inline: 0.75rem;
+  }
+
+  .nav__menu {
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .nav__list {
+    grid-template-columns: repeat(2, max-content);
+    gap: 1rem 1.5rem;
+  }
+
+  .home__title {
+    font-size: var(--h1-font-size);
+  }
+
+  .home__blob {
+    width: 160px;
+    height: 240px;
+  }
+
+  .home__profile {
+    width: 140px;
+    height: 220px;
+  }
+
+  .home__profile img {
+    width: 140px;
+  }
+
+  .skills__info {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skills__blob {
+    width: 70px;
+    height: 80px;
+  }
+
+  .skills__blob img {
+    width: 36px;
+  }
+
+  .services_card {
+    width: 200px;
+    height: 320px;
+    padding: 2rem 1rem;
+  }
+
+  .services_border {
+    width: 210px;
+    height: 330px;
+  }
+
+  .projects_img {
+    width: 180px;
+  }
+
+  .contact_form_div {
+    height: 3.5rem;
+  }
+
+  .contact_form_input {
+    padding: 0.75rem;
+    font-size: var(--smaller-font-size);
+  }
+
+  .footer_list {
+    column-gap: 1.5rem;
+  }
+}
+
+/* Adjusting for devices between 321px and 379px */
+@media screen and (min-width: 321px) and (max-width: 379px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .nav__menu {
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  .home__blob {
+    width: 180px;
+    height: 260px;
+  }
+
+  .home__profile {
+    width: 160px;
+    height: 240px;
+  }
+
+  .skills__blob {
+    width: 80px;
+    height: 90px;
+  }
+
+  .services_card {
+    width: 220px;
+    height: 340px;
+  }
+}
+
+/* Improving medium device responsiveness */
+@media screen and (min-width: 380px) and (max-width: 767px) {
+  .nav__menu {
+    width: 320px;
+  }
+
+  .home__blob {
+    width: 200px;
+    height: 280px;
+  }
+
+  .skills__info {
+    gap: 1.5rem;
+  }
+
+  .projects_container {
+    width: 320px;
+  }
+}
+
 /*=============== BASE ===============*/
 * {
   box-sizing: border-box;
@@ -1117,6 +1255,26 @@ text-align: center;
   
   .loader__progress {
     width: 300px;
+  }
+}
+
+/* Loader adjustments for small devices */
+@media screen and (max-width: 320px) {
+  .loader__letter {
+    font-size: 1.75rem;
+  }
+
+  .loader__subtitle {
+    font-size: var(--small-font-size);
+  }
+
+  .loader__tech-item {
+    font-size: var(--smaller-font-size);
+    padding: 0.35rem 0.75rem;
+  }
+
+  .loader__progress {
+    width: 180px;
   }
 }
 

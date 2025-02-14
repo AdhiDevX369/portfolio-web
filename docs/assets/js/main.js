@@ -40,7 +40,26 @@ let swiperProjects = new Swiper(".projects_container", {
           spaceBetween: -56,
         },
     },
-  })
+    touchRatio: 1,
+    touchAngle: 45,
+    grabCursor: true,
+    resistance: true,
+    resistanceRatio: 0.65,
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+        },
+        1200: {
+            slidesPerView: 2,
+            spaceBetween: -56,
+        },
+    },
+})
 
 /*=============== SWIPER TESTIMONIAL ===============*/
 // ! comments swiper
@@ -49,6 +68,17 @@ let swiperComments = new Swiper(".comments_container", {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
+    touchRatio: 1,
+    touchAngle: 45,
+    grabCursor: true,
+    resistance: true,
+    resistanceRatio: 0.65,
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        }
+    }
 })
 
 
@@ -171,4 +201,48 @@ window.addEventListener('load', () => {
             }
         });
     }, 6500); // Extended to 6.5 seconds to match the complete animation sequence
+});
+
+/*=============== MOBILE OPTIMIZATIONS ===============*/
+// Add passive event listeners for better scroll performance
+document.addEventListener('touchstart', function() {}, {passive: true});
+document.addEventListener('touchmove', function() {}, {passive: true});
+
+// Optimize scroll handlers
+let scrollTimeout;
+const optimizedScrollHandler = () => {
+    if (!scrollTimeout) {
+        scrollTimeout = setTimeout(() => {
+            scrollTimeout = null;
+            scrollActive();
+            scrollUp();
+            scrollHeader();
+        }, 16); // ~60fps
+    }
+};
+
+window.removeEventListener('scroll', scrollActive);
+window.removeEventListener('scroll', scrollUp);
+window.removeEventListener('scroll', scrollHeader);
+window.addEventListener('scroll', optimizedScrollHandler);
+
+// Optimize loader for mobile
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.loader');
+    if (window.innerWidth <= 320) {
+        // Reduce animation time for smaller devices
+        setTimeout(() => {
+            loader.classList.add('loader--hidden');
+            if (document.body.contains(loader)) {
+                document.body.removeChild(loader);
+            }
+        }, 4000);
+    } else {
+        // ...existing loader code...
+    }
+});
+
+// Add fast click for mobile devices
+document.querySelectorAll('a, button, .nav__link, .services_card').forEach(element => {
+    element.addEventListener('touchstart', function() {}, {passive: true});
 });
