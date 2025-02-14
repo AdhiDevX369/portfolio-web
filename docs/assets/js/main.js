@@ -34,10 +34,21 @@ let swiperProjects = new Swiper(".projects_container", {
     pagination: {
       el: ".swiper-pagination",
     },
+    preloadImages: false,
+    lazy: true,
+    watchSlidesProgress: true,
     breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+        },
         1200: {
-          slidesPerView: 2,
-          spaceBetween: -56,
+            slidesPerView: 2,
+            spaceBetween: -56,
         },
     },
   })
@@ -89,7 +100,7 @@ contactForm.addEventListener('submit', sendEmail)
 // select all sections id
 const sections = document.querySelectorAll("section[id]")
 // add active-link class while scrolling
-const scrollActive = ()=>{
+const scrollActive = debounce(() => {
     // get scrallY value 
     const scrollY = window.pageYOffset
     // check where scroll currently is
@@ -104,7 +115,7 @@ const scrollActive = ()=>{
             sectionsClass.classList.remove("active_link")
         }
     })
-}
+}, 15)
 window.addEventListener('scroll', scrollActive)
 // ! show scroll up
 const scrollUp = ()=>{
@@ -129,14 +140,7 @@ if(selectedTheme){
     themeButton.classList[selectedIcon === "ri-moon-line" ? "add" : "remove"](iconTheme)
 }
 // activte deactivate theme
-themeButton.addEventListener('click', ()=>{
-    // add remove
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // save theme
-    localStorage.setItem("selected_theme", getCurrentTheme())
-    localStorage.setItem("selected_icon", getCurrentIcon())
-})
+themeButton.addEventListener('click', handleThemeSwitch)
 // ! change background header
 const scrollHeader = () =>{
     const header = document.getElementById('header') 
@@ -158,17 +162,116 @@ sr.reveal(".qualification_content, .services_card", {interval:100})
 sr.reveal(".links__content", {delay:400, interval:50})
 
 /*=============== LOADER ===============*/
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.loader');
-    
-    // Increase time to show full animation sequence with rotating tech icons
-    setTimeout(() => {
-        loader.classList.add('loader--hidden');
-        
-        loader.addEventListener('transitionend', () => {
-            if (document.body.contains(loader)) {
-                document.body.removeChild(loader);
+    const content = document.querySelector('.main');
+
+    // Hide loader after content loads
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loader.classList.add('loader--hidden');
+            content.style.visibility = 'visible';
+            initializeAnimations();
+        }, 1000);
+    });
+});
+
+/*=============== PERFORMANCE OPTIMIZATIONS ===============*/
+// Debounce function for performance
+const debounce = (func, wait) => {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+};
+
+// Optimize theme switching
+const handleThemeSwitch = debounce(() => {
+    // add remove
+    document.body.classList.toggle(darkTheme)
+    themeButton.classList.toggle(iconTheme)
+    // save theme
+    localStorage.setItem("selected_theme", getCurrentTheme())
+    localStorage.setItem("selected_icon", getCurrentIcon())
+}, 150);
+
+/*=============== LAZY LOADING IMAGES ===============*/
+const lazyLoadImages = () => {
+    const images = document.querySelectorAll('[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
             }
         });
-    }, 6500); // Extended to 6.5 seconds to match the complete animation sequence
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+};
+
+/*=============== SMOOTH SCROLL ===============*/
+const smoothScroll = (target, duration) => {
+    const targetPosition = target.getBoundingClientRect().top;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    const animation = currentTime => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    };
+
+    const ease = (t, b, c, d) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    };
+
+    requestAnimationFrame(animation);
+};
+
+/*=============== INITIALIZE ANIMATIONS ===============*/
+const initializeAnimations = () => {
+    // ScrollReveal configurations
+    ScrollReveal({
+        origin: 'top',
+        distance: '60px',
+        duration: 2500,
+        delay: 400,
+        // Disable for users who prefer reduced motion
+        mobile: !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    });
+
+    // Apply reveal animations
+    ScrollReveal().reveal('.home__data, .home__social', { origin: 'bottom' });
+    ScrollReveal().reveal('.home__info div', { delay: 600, origin: 'bottom', interval: 100 });
+    ScrollReveal().reveal('.skills__content:nth-child(1)', { origin: 'left' });
+    ScrollReveal().reveal('.skills__content:nth-child(2)', { origin: 'right' });
+    ScrollReveal().reveal('.qualification__content', { interval: 100 });
+    ScrollReveal().reveal('.services_card', { interval: 100 });
+};
+
+// Initialize everything after DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    lazyLoadImages();
+    
+    // Add smooth scroll to all internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) smoothScroll(target, 1000);
+        });
+    });
+    
+    // Initialize other existing functionality
+    // ...existing initialization code...
 });

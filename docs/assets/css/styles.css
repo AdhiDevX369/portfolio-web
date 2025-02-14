@@ -37,6 +37,11 @@
   --z-tooltip: 10;
   --z-fixed: 100;
   
+  /* Viewport sizes */
+  --mobile-width: 320px;
+  --tablet-width: 768px;
+  --laptop-width: 1024px;
+  --desktop-width: 1200px;
 }
 
 /* Responsive typography */
@@ -90,6 +95,8 @@ a {
 img {
   max-width: 100%;
   height: auto;
+  /* Add loading optimization */
+  loading: lazy;
 }
 
 /*=============== THEME ===============*/
@@ -157,6 +164,7 @@ body.dark_theme{
 
 .section {
   padding-block: 2.5rem;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .section__border {
@@ -971,6 +979,10 @@ text-align: center;
   align-items: center;
   z-index: var(--z-fixed);
   transition: opacity 0.5s ease-out, visibility 0.5s;
+  /* Add hardware acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .loader__content {
@@ -1514,4 +1526,72 @@ text-align: center;
   .footer_copy{
       margin-top: 5rem;
   }
+}
+
+/* Enhanced responsive breakpoints */
+/* Mobile First approach */
+@media screen and (min-width: 320px) {
+    .container {
+        margin-inline: 1rem;
+    }
+    
+    .home__title {
+        font-size: calc(var(--h1-font-size) * 1.2);
+    }
+    
+    .skills__info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .container {
+        margin-inline: 1.5rem;
+    }
+    
+    .skills__info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .home__blob {
+        width: 180px;
+        height: 260px;
+    }
+}
+
+/* Tablet optimization */
+@media screen and (min-width: 768px) {
+    .container {
+        margin-inline: 2rem;
+    }
+    
+    .skills__info {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .projects_container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* Enhanced dark mode transition */
+body,
+.nav,
+.nav__menu,
+.dark_theme {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Performance optimizations for animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
