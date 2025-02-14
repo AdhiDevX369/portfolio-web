@@ -993,13 +993,8 @@ text-align: center;
   font-size: 2.5rem;
   font-weight: var(--font-semi-bold);
   color: var(--title-color);
-  animation: letterFloat 1.5s ease-in-out infinite;
+  animation: simpleFloat 2s ease-in-out infinite;
   animation-delay: calc(0.1s * var(--delay));
-  background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .loader__subtitle {
@@ -1045,17 +1040,17 @@ text-align: center;
 .loader__progress-bar {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335);
+  background: var(--title-color);
   animation: progress 2s ease-in-out infinite;
   transform-origin: left;
 }
 
-@keyframes letterFloat {
+@keyframes simpleFloat {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
 }
 
