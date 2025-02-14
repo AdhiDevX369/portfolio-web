@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-cache-v1';
+const CACHE_NAME = 'adithya-portfolio-v1';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -8,15 +8,17 @@ const urlsToCache = [
   '/assets/js/scrollreveal.min.js',
   '/assets/js/swiper-bundle.min.js',
   '/assets/img/profile.png',
-  '/assets/img/shape-wawes.svg',
-  '/assets/img/shape-circle.svg'
+  'https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css'
 ];
 
 // Install service worker
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+      .then(cache => {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
   );
 });
 
@@ -52,17 +54,32 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// Clean up old caches
+// Update service worker
 self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
             return caches.delete(cacheName);
           }
         })
       );
     })
   );
+});
+
+// Handle offline fallback
+self.addEventListener('fetch', event => {
+  if (!navigator.onLine) {
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        if (response) {
+          return response;
+        }
+        return caches.match('/offline.html');
+      })
+    );
+  }
 });

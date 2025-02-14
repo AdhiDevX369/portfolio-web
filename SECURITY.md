@@ -1,12 +1,39 @@
-<h1 align="center">Security Policy</h1>
+# Security Policy
 
-<p align="center">
-  <strong>If you discover a security vulnerability in this project, please send an email to Dammika Ekanayaka at Dammikaekanayaka1980@gmail.com. All security vulnerabilities will be promptly addressed.</strong>
-</p>
+## Supported Versions
+
+This portfolio website is currently supported with security updates.
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.0.x   | :white_check_mark: |
+
+## Security Features
+
+- SSL/TLS encryption
+- Content Security Policy (CSP)
+- XSS Protection
+- Secure Cookie Handling
+- HTTPS Enforcement
+- Modern Cryptographic Standards
 
 ## Reporting a Vulnerability
 
-To report a security vulnerability, please send an email to Dammika Ekanayaka at Dammikaekanayaka1980@gmail.com with a detailed description of the vulnerability and steps to reproduce it. Please include any relevant logs, screenshots, or other materials that can help us understand and address the issue. 
+If you discover any security vulnerabilities, please report them by:
 
-We take all security vulnerabilities seriously and will respond promptly to any reports. Thank you for helping to keep our project secure!
+1. **Email**: Contact me directly at your-email@domain.com
+2. **GitHub**: Open a security advisory through GitHub's Security tab
+3. **LinkedIn**: Message me on LinkedIn
+
+I take security seriously and will respond to verified vulnerabilities promptly.
+
+## Response Timeline
+
+- **24 hours**: Initial response to your report
+- **72 hours**: Update on validity and action plan
+- **7 days**: Expected timeline for fixing verified issues
+
+## Recognition
+
+I maintain a list of security researchers who have helped improve the security of this website. Contributors will be acknowledged (with permission).
 
