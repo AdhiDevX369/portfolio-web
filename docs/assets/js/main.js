@@ -34,21 +34,10 @@ let swiperProjects = new Swiper(".projects_container", {
     pagination: {
       el: ".swiper-pagination",
     },
-    preloadImages: false,
-    lazy: true,
-    watchSlidesProgress: true,
     breakpoints: {
-        320: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-        },
-        768: {
-            slidesPerView: 1,
-            spaceBetween: 30,
-        },
         1200: {
-            slidesPerView: 2,
-            spaceBetween: -56,
+          slidesPerView: 2,
+          spaceBetween: -56,
         },
     },
   })
@@ -100,7 +89,7 @@ contactForm.addEventListener('submit', sendEmail)
 // select all sections id
 const sections = document.querySelectorAll("section[id]")
 // add active-link class while scrolling
-const scrollActive = debounce(() => {
+const scrollActive = ()=>{
     // get scrallY value 
     const scrollY = window.pageYOffset
     // check where scroll currently is
@@ -115,7 +104,7 @@ const scrollActive = debounce(() => {
             sectionsClass.classList.remove("active_link")
         }
     })
-}, 15)
+}
 window.addEventListener('scroll', scrollActive)
 // ! show scroll up
 const scrollUp = ()=>{
@@ -140,10 +129,21 @@ if(selectedTheme){
     themeButton.classList[selectedIcon === "ri-moon-line" ? "add" : "remove"](iconTheme)
 }
 // activte deactivate theme
-themeButton.addEventListener('click', handleThemeSwitch)
+themeButton.addEventListener('click', ()=>{
+    // add remove
+    document.body.classList.toggle(darkTheme)
+    themeButton.classList.toggle(iconTheme)
+    // save theme
+    localStorage.setItem("selected_theme", getCurrentTheme())
+    localStorage.setItem("selected_icon", getCurrentIcon())
+})
 // ! change background header
 const scrollHeader = () =>{
     const header = document.getElementById('header') 
+    this.scrollY >= 50 ? header.classList.add("bg_header") : header.classList.remove("bg_header")
+}
+window.addEventListener('scroll', scrollHeader)
+// ! scroll animation
 const sr = ScrollReveal({
     origin: "top",
     distance: "50px",

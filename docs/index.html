@@ -3,35 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="description" content="Adithya Bandara - Associate AI Engineer Portfolio">
-    <meta name="theme-color" content="#ffffff">
-    
-    <!-- Preload critical assets -->
-    <link rel="preload" href="assets/css/styles.css" as="style">
-    <link rel="preload" href="assets/js/main.js" as="script">
-    <link rel="preload" href="assets/fonts/your-main-font.woff2" as="font" crossorigin>
-    
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!--=============== FAVICON ===============-->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/ICON.png">
-    
+    <link rel="shortcut icon" href="assets/img/ICON.png" type="image/x-icon">
+
     <!--=============== REMIXICONS ===============-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css" media="print" onload="this.media='all'">
-    
-    <!--=============== CSS ===============-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css" rel="stylesheet">
+
+    <!--=============== SWIPER CSS ===============-->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <title>Adithya Bandara | TrailBlazers</title>
 </head>
 
 <body>
-    <!-- Loader with optimized animation -->
-    <div class="loader" aria-label="Loading...">
+    <!-- Loader -->
+    <div class="loader">
         <div class="loader__content">
             <div class="loader__text-wrapper">
                 <div class="loader__title">
@@ -122,7 +113,7 @@
     </header>
 
     <!--==================== MAIN ====================-->
-    <main class="main" style="visibility: hidden">
+    <main class="main">
         <!--==================== HOME ====================-->
         <section class="home section" id="home">
             <div class="home__container container grid section__border">
@@ -735,8 +726,17 @@
         <i class="ri-arrow-up-s-fill"></i>
     </a>
     <!-- ! SCROLL REVEAL -->
-    <script src="assets/js/scrollreveal.min.js" defer></script>
+    <script src="./assets/js/scrollreveal.min.js"></script>
     <!-- ! SWIPER JS -->
+    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <!-- ! EMAIL JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
     <script src="assets/js/swiper-bundle.min.js" defer></script>
     <!-- ! EMAIL JS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
