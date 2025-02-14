@@ -5,4 +5,4 @@ Allow: /docs/assets/
 Disallow: /docs/assets/js/
 Disallow: /docs/assets/css/
 
-Sitemap: https://portfolio.adhidev369.live/sitemap.xml
+Sitemap: https://adhidevx369.github.io/portfolio-web/sitemap.xml
