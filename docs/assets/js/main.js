@@ -155,12 +155,20 @@ sr.reveal(".home_info", {delay:600,origin:"bottom",interval:100})
 sr.reveal(".skills_content:nth-child(1), .contact_content:nth-child(1)", {origin:"left"})
 sr.reveal(".skills_content:nth-child(2), .contact_content:nth-child(2)", {origin:"right"})
 sr.reveal(".qualification_content, .services_card", {interval:100})
+sr.reveal(".links__content", {delay:400, interval:50})
 
 /*=============== LOADER ===============*/
 window.addEventListener('load', () => {
     const loader = document.querySelector('.loader');
-    loader.classList.add('loader--hidden');
-    loader.addEventListener('transitionend', () => {
-        document.body.removeChild(loader);
-    });
+    
+    // Increase time to show full animation sequence with rotating tech icons
+    setTimeout(() => {
+        loader.classList.add('loader--hidden');
+        
+        loader.addEventListener('transitionend', () => {
+            if (document.body.contains(loader)) {
+                document.body.removeChild(loader);
+            }
+        });
+    }, 6500); // Extended to 6.5 seconds to match the complete animation sequence
 });

@@ -23,7 +23,36 @@
 <body>
     <!-- Loader -->
     <div class="loader">
-        <img src="assets/img/loading.svg" alt="Loading..." />
+        <div class="loader__content">
+            <div class="loader__text-wrapper">
+                <div class="loader__title">
+                    <span class="loader__letter" style="--delay: 0">A</span>
+                    <span class="loader__letter" style="--delay: 1">D</span>
+                    <span class="loader__letter" style="--delay: 2">H</span>
+                    <span class="loader__letter" style="--delay: 3">I</span>
+                    <span class="loader__letter" style="--delay: 4">D</span>
+                    <span class="loader__letter" style="--delay: 5">E</span>
+                    <span class="loader__letter" style="--delay: 6">V</span>
+                    <span class="loader__letter" style="--delay: 7">X</span>
+                    <span class="loader__letter" style="--delay: 8">3</span>
+                    <span class="loader__letter" style="--delay: 9">6</span>
+                    <span class="loader__letter" style="--delay: 10">9</span>
+                </div>
+                <div class="loader__subtitle">Building AI Solutions                     
+                </div>
+                <div class="loader__tech-stack">
+                    <div class="loader__tech-item" style="--tech-delay: 0">Python</div>
+                    <div class="loader__tech-item" style="--tech-delay: 1">TensorFlow</div>
+                    <div class="loader__tech-item" style="--tech-delay: 2">PyTorch</div>
+                    <div class="loader__tech-item" style="--tech-delay: 3">AWS</div>
+                    <div class="loader__tech-item" style="--tech-delay: 4">Azure</div>
+                    <div class="loader__tech-item" style="--tech-delay: 5">GCP</div>
+                </div>
+                <div class="loader__progress">
+                    <div class="loader__progress-bar"></div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!--==================== HEADER ====================-->
@@ -45,6 +74,11 @@
                     <li class="nav__items">
                         <a href="#qualification" class="nav__link">
                             <i class="ri-book-open-line"></i>Qualification
+                        </a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#links" class="nav__link">
+                            <i class="ri-links-line"></i>Links
                         </a>
                     </li>
                     <li class="nav__items">
@@ -104,8 +138,8 @@
                         <a href="https://github.com/adhidevx369" target="_blank" class="home__social-link">
                             <i class="ri-github-line"></i>
                         </a>
-                        <a href="https://www.behance.net/adithyabandara" target="_blank" class="home__social-link">
-                            <i class="ri-behance-line"></i>
+                        <a href="https://adithyabandara.medium.com/" target="_blank" class="home__social-link">
+                            <i class="ri-medium-line"></i>
                         </a>
                     </ul>
                 </div>
@@ -333,6 +367,51 @@
             <img src="assets/img/shape-circle.svg" alt="qualification image" class="qualification__img">
         </section>
 
+        <!--==================== MY LINKS ====================-->
+        <section class="links section" id="links">
+            <h2 class="section__title">My Links</h2>
+            <span class="section__subtitle">Connect with me on platforms</span>
+
+            <div class="links__container container grid section__border">
+                <div class="links__content">
+                    <a href="https://www.kaggle.com/" target="_blank" class="links__card">
+                        <div class="links__icon">
+                            <img src="assets/img/kaggle.svg" alt="Kaggle" style="width: 35px; filter: invert(30%) sepia(67%) saturate(1338%) hue-rotate(187deg) brightness(97%) contrast(98%);">
+                        </div>
+                        <h3 class="links__name">Kaggle</h3>
+                    </a>
+
+                    <a href="https://huggingface.co/" target="_blank" class="links__card">
+                        <div class="links__icon">
+                            <i class="ri-robot-line" style="color: #FFB62E;"></i>
+                        </div>
+                        <h3 class="links__name">HuggingFace</h3>
+                    </a>
+
+                    <a href="https://www.hackerrank.com/" target="_blank" class="links__card">
+                        <div class="links__icon">
+                            <i class="ri-code-box-line" style="color: #2EC866;"></i>
+                        </div>
+                        <h3 class="links__name">HackerRank</h3>
+                    </a>
+
+                    <a href="https://leetcode.com/" target="_blank" class="links__card">
+                        <div class="links__icon">
+                            <i class="ri-code-line" style="color: #FFA116;"></i>
+                        </div>
+                        <h3 class="links__name">LeetCode</h3>
+                    </a>
+
+                    <a href="https://www.facebook.com/adithyabandara2001" target="_blank" class="links__card">
+                        <div class="links__icon">
+                            <i class="ri-facebook-fill" style="color: #1877F2;"></i>
+                        </div>
+                        <h3 class="links__name">Facebook</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!--==================== SERVICES ====================-->
         <section class="services section" id="services">
             <!-- ? service header -->
@@ -348,8 +427,7 @@
                         Development
                     </h2>
                     <p class="services_description">
-                        I offer comprehensive AI development services including machine learning models, 
-                        natural language processing, and computer vision solutions customized for your business needs.
+                        I offer AI development services with ML, NLP, and computer vision solutions.
                     </p>
                     <div class="services_border"></div>
                 </div>
@@ -361,8 +439,7 @@
                         Solutions
                     </h2>
                     <p class="services_description">
-                        I provide cloud architecture and deployment services across AWS, Azure, and GCP platforms, 
-                        including containerization, serverless computing, and cloud infrastructure management.
+                        Cloud deployment for AWS, Azure, and GCP with containerization and serverless services.
                     </p>
                     <div class="services_border"></div>
                 </div>
@@ -374,8 +451,19 @@
                         Services
                     </h2>
                     <p class="services_description">
-                        I offer end-to-end MLOps services including model deployment, monitoring, and maintenance 
-                        with automated pipelines for continuous integration and delivery of ML models.
+                        I offer MLOps services for efficient deployment and CI/CD.
+                    </p>
+                    <div class="services_border"></div>
+                </div>
+                <!-- LLmops -->
+                <div class="services_card">
+                    <i class="ri-rocket-line"></i>
+                    <h2 class="services_title">
+                        LLmops<br>
+                        Services
+                    </h2>
+                    <p class="services_description">
+                        I offer LLmops services for efficient deployment and CI/CD.
                     </p>
                     <div class="services_border"></div>
                 </div>

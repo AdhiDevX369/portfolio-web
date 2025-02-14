@@ -1,17 +1,760 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="100px" height="100px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <g>
-    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="5">
-      <animate attributeName="stroke-dasharray" dur="2s" values="0 283;283 283" repeatCount="indefinite"/>
-      <animate attributeName="stroke-dashoffset" dur="2s" values="0;283" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="5" transform="rotate(180 50 50)">
-      <animate attributeName="stroke-dasharray" dur="2s" values="0 220;220 220" repeatCount="indefinite"/>
-      <animate attributeName="stroke-dashoffset" dur="2s" values="0;220" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="5">
-      <animate attributeName="stroke-dasharray" dur="2s" values="0 157;157 157" repeatCount="indefinite"/>
-      <animate attributeName="stroke-dashoffset" dur="2s" values="0;157" repeatCount="indefinite"/>
-    </circle>
-  </g>
+<svg width="400px" height="400px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FF6F00"/>
+            <stop offset="100%" style="stop-color:#EA4335"/>
+        </linearGradient>
+        <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4285F4"/>
+            <stop offset="100%" style="stop-color:#34A853"/>
+        </linearGradient>
+        <linearGradient id="mlopsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FBBC05"/>
+            <stop offset="100%" style="stop-color:#FF9900"/>
+        </linearGradient>
+        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4285F4"/>
+            <stop offset="33%" style="stop-color:#EA4335"/>
+            <stop offset="66%" style="stop-color:#FBBC05"/>
+            <stop offset="100%" style="stop-color:#34A853"/>
+        </linearGradient>
+        
+        <!-- Glowing effect -->
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <style>
+        .neural-path {
+            stroke-dasharray: 100;
+            animation: dash 3s linear infinite;
+        }
+        .node {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .central-node {
+            animation: centralPulse 2s ease-in-out infinite;
+        }
+        .floating-icon {
+            animation: float var(--float-duration, 6s) ease-in-out infinite;
+            opacity: 0.15;
+        }
+        @keyframes dash {
+            from {
+                stroke-dashoffset: 1000;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        @keyframes centralPulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% {
+                transform: scale(1.3);
+                filter: brightness(1.2);
+            }
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(var(--float-x, 5px), var(--float-y, -5px));
+            }
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .tech-icon {
+            animation: float var(--float-duration, 6s) ease-in-out infinite;
+            opacity: 0.2;
+            transform-origin: center;
+            transition: opacity 0.3s ease;
+        }
+        .tech-icon:hover {
+            opacity: 0.5;
+        }
+        .tech-group {
+            animation: rotateGroup 20s linear infinite;
+            transform-origin: center;
+        }
+        @keyframes rotateGroup {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .service-icon {
+            animation: serviceFloat 8s ease-in-out infinite;
+            opacity: 0.2;
+            transform-origin: center;
+            transition: all 0.5s ease;
+        }
+        .service-icon:hover {
+            opacity: 0.6;
+            filter: brightness(1.2);
+        }
+        @keyframes serviceFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(5px, -5px) rotate(3deg); }
+            50% { transform: translate(0, -8px) rotate(-2deg); }
+            75% { transform: translate(-5px, -3px) rotate(1deg); }
+        }
+        .orbit {
+            animation: orbit 20s linear infinite;
+            transform-origin: center;
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .framework-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            opacity: 0;
+            animation: fadeInOut 4s infinite;
+        }
+        
+        .tool-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            opacity: 0;
+            animation: rotateIn 3s infinite;
+        }
+        
+        .skill-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0;
+            animation: pulseText 4s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateY(10px); }
+            50% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotateIn {
+            0% { opacity: 0; transform: rotate(-5deg) scale(0.9); }
+            50% { opacity: 1; transform: rotate(0) scale(1); }
+            100% { opacity: 0; transform: rotate(5deg) scale(0.9); }
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .ai-circle, .cloud-circle, .tools-circle {
+            fill: none;
+            stroke-width: 1;
+            stroke-dasharray: 10,5;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .tech-category {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            opacity: 0;
+            animation: slideIn 0.8s forwards;
+        }
+
+        .rotating-text {
+            transform-origin: center;
+            animation: rotate 20s linear infinite;
+        }
+
+        .pulse-text {
+            animation: pulse 2s infinite;
+        }
+    </style>
+    
+    <!-- Background Icons -->
+    <g class="background-icons">
+        <!-- Python Icon -->
+        <path class="floating-icon" style="--float-duration: 7s; --float-x: 8px; --float-y: -8px;"
+            d="M15,15 C10,15 8,12 8,8 C8,4 10,2 15,2 L25,2 C30,2 32,4 32,8 L32,12 C32,16 30,18 25,18"
+            fill="#3776AB"/>
+        
+        <!-- Cloud Icon -->
+        <path class="floating-icon" style="--float-duration: 8s; --float-x: -6px; --float-y: -10px;"
+            d="M70,20 C75,20 80,25 80,30 C80,35 75,40 70,40 L60,40 C55,40 50,35 50,30 C50,25 55,20 60,20"
+            fill="#4285F4"/>
+            
+        <!-- AI Brain Icon -->
+        <path class="floating-icon" style="--float-duration: 6s; --float-x: 10px; --float-y: -5px;"
+            d="M80,70 C85,70 90,75 90,80 C90,85 85,90 80,90 L70,90 C65,90 60,85 60,80 C60,75 65,70 70,70"
+            fill="#EA4335"/>
+            
+        <!-- Database Icon -->
+        <path class="floating-icon" style="--float-duration: 9s; --float-x: -8px; --float-y: -7px;"
+            d="M20,70 C15,70 10,65 10,60 C10,55 15,50 20,50 L30,50 C35,50 40,55 40,60 C40,65 35,70 30,70"
+            fill="#FBBC05"/>
+            
+        <!-- Docker Container Icon -->
+        <rect class="floating-icon" style="--float-duration: 7.5s; --float-x: 7px; --float-y: -9px;"
+            x="45" y="45" width="10" height="10" rx="2"
+            fill="#34A853"/>
+        
+        <!-- TensorFlow -->
+        <path class="tech-icon" style="--float-duration: 8s; --float-x: 12px; --float-y: -8px;"
+            d="M10,10 l8,4 l-8,4 l-8,-4 l8,-4" fill="#FF6F00"/>
+        
+        <!-- PyTorch -->
+        <path class="tech-icon" style="--float-duration: 7.5s; --float-x: -10px; --float-y: -12px;"
+            d="M80,15 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0" fill="#EE4C2C"/>
+        
+        <!-- AWS Cloud -->
+        <path class="tech-icon" style="--float-duration: 9s; --float-x: 8px; --float-y: -15px;"
+            d="M70,25 l10,-5 l10,5 l-10,5 z" fill="#FF9900"/>
+        
+        <!-- Azure -->
+        <path class="tech-icon" style="--float-duration: 8.5s; --float-x: -15px; --float-y: -8px;"
+            d="M15,75 q15,-5 30,0 q-15,5 -30,0" fill="#0089D6"/>
+        
+        <!-- Docker -->
+        <rect class="tech-icon" style="--float-duration: 7s; --float-x: 12px; --float-y: -10px;"
+            x="75" y="65" width="12" height="8" rx="1" fill="#2496ED"/>
+        
+        <!-- Kubernetes -->
+        <path class="tech-icon" style="--float-duration: 8.2s; --float-x: -8px; --float-y: -12px;"
+            d="M15,45 l6,-6 l6,6 l-6,6 z" fill="#326CE5"/>
+        
+        <!-- Python -->
+        <path class="tech-icon" style="--float-duration: 7.8s; --float-x: 10px; --float-y: -9px;"
+            d="M85,45 q-5,-5 0,-10 q5,5 0,10" fill="#3776AB"/>
+        
+        <!-- ML Icon -->
+        <circle class="tech-icon" style="--float-duration: 8.8s; --float-x: -12px; --float-y: -10px;"
+            cx="45" cy="75" r="4" fill="#4285F4"/>
+        
+        <!-- Neural Network -->
+        <path class="tech-icon" style="--float-duration: 7.3s; --float-x: 9px; --float-y: -11px;"
+            d="M45,15 l5,5 l-5,5 l-5,-5 z" fill="#EA4335"/>
+            
+        <!-- LLM Icon -->
+        <path class="tech-icon" style="--float-duration: 8.5s; --float-x: -11px; --float-y: -9px;"
+            d="M40,45 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0" fill="#FBBC05" stroke="#EA4335" stroke-width="0.5"/>
+    </g>
+
+    <!-- Outer rotating tech group -->
+    <g class="tech-group">
+        <!-- AI/ML Icons -->
+        <g transform="translate(50, 50)">
+            <!-- TensorFlow -->
+            <path class="tech-icon" style="--float-duration: 8s; transform: translate(-35px, -35px);"
+                d="M-4,-4 l8,4 l-8,4 l-8,-4 z" fill="#FF6F00"/>
+            
+            <!-- PyTorch -->
+            <circle class="tech-icon" style="--float-duration: 7.5s; transform: translate(35px, -35px);"
+                r="6" fill="#EE4C2C"/>
+            
+            <!-- Scikit-learn -->
+            <path class="tech-icon" style="--float-duration: 7.8s; transform: translate(35px, 35px);"
+                d="M0,0 q5,-5 10,0 q-5,5 -10,0" fill="#3499CD"/>
+                
+            <!-- Neural Network -->
+            <path class="tech-icon" style="--float-duration: 8.2s; transform: translate(-35px, 35px);"
+                d="M-5,-5 l10,0 l0,10 l-10,0 z" fill="#EA4335"/>
+        </g>
+    </g>
+
+    <!-- Cloud/DevOps rotating group -->
+    <g class="tech-group" style="animation-direction: reverse;">
+        <g transform="translate(50, 50)">
+            <!-- AWS -->
+            <path class="tech-icon" style="--float-duration: 7.3s; transform: translate(-25px, -40px);"
+                d="M-8,-4 l16,0 l-8,8 z" fill="#FF9900"/>
+            
+            <!-- Azure -->
+            <path class="tech-icon" style="--float-duration: 8.5s; transform: translate(40px, -25px);"
+                d="M-8,0 q8,-8 16,0 q-8,8 -16,0" fill="#0089D6"/>
+            
+            <!-- GCP -->
+            <path class="tech-icon" style="--float-duration: 7.8s; transform: translate(25px, 40px);"
+                d="M-6,-6 l12,0 l6,10 l-24,0 z" fill="#4285F4"/>
+            
+            <!-- Docker -->
+            <rect class="tech-icon" style="--float-duration: 8s; transform: translate(-40px, 25px);"
+                x="-6" y="-4" width="12" height="8" rx="2" fill="#2496ED"/>
+        </g>
+    </g>
+
+    <!-- MLOps/Infrastructure rotating group -->
+    <g class="tech-group" style="animation-duration: 25s;">
+        <g transform="translate(50, 50)">
+            <!-- Kubernetes -->
+            <path class="tech-icon" style="--float-duration: 8.2s; transform: translate(0px, -45px);"
+                d="M-6,-6 l12,0 l0,12 l-12,0 z" fill="#326CE5"/>
+            
+            <!-- MLflow -->
+            <circle class="tech-icon" style="--float-duration: 7.5s; transform: translate(45px, 0px);"
+                r="5" fill="#00A98F"/>
+            
+            <!-- Jenkins -->
+            <rect class="tech-icon" style="--float-duration: 8s; transform: translate(0px, 45px);"
+                x="-5" y="-5" width="10" height="10" fill="#D24939"/>
+            
+            <!-- GitLab -->
+            <path class="tech-icon" style="--float-duration: 7.8s; transform: translate(-45px, 0px);"
+                d="M-5,-5 l10,10 l-10,0 z" fill="#FCA121"/>
+        </g>
+    </g>
+
+    <!-- Service-specific Background Icons -->
+    <g class="orbit" style="animation-duration: 25s;">
+        <!-- AI Service Icons -->
+        <g transform="translate(50,50)">
+            <path class="service-icon" fill="url(#aiGradient)" d="M-20,-20 h10 l5,5 l-5,5 h-10 z" 
+                style="animation-delay: 0.5s"/>
+            <circle class="service-icon" fill="#EA4335" cx="15" cy="-25" r="4" 
+                style="animation-delay: 1s"/>
+            <rect class="service-icon" fill="#FF6F00" x="20" y="10" width="8" height="8" 
+                style="animation-delay: 1.5s"/>
+        </g>
+    </g>
+
+    <g class="orbit" style="animation-duration: 20s; animation-direction: reverse;">
+        <!-- Cloud Service Icons -->
+        <g transform="translate(50,50)">
+            <path class="service-icon" fill="url(#cloudGradient)" d="M-25,0 q5,-10 15,-5 q5,-5 10,0 q5,-2 8,3 q-3,8 -10,5 q-5,5 -10,0 q-10,5 -13,-3"
+                style="animation-delay: 2s"/>
+            <path class="service-icon" fill="#4285F4" d="M10,15 l8,-8 l8,8 l-8,8 z"
+                style="animation-delay: 2.5s"/>
+        </g>
+    </g>
+
+    <g class="orbit" style="animation-duration: 30s;">
+        <!-- MLOps Service Icons -->
+        <g transform="translate(50,50)">
+            <path class="service-icon" fill="url(#mlopsGradient)" d="M-15,20 c-5,-5 5,-15 10,-10 c5,-5 15,5 10,10 z"
+                style="animation-delay: 3s"/>
+            <rect class="service-icon" fill="#FBBC05" x="-25" y="-15" width="10" height="10" rx="2"
+                style="animation-delay: 3.5s"/>
+        </g>
+    </g>
+
+    <!-- Background Circle -->
+    <circle cx="50" cy="50" r="45" fill="none" stroke="#4285F4" stroke-width="0.5" opacity="0.1"/>
+    
+    <!-- Neural Network Paths -->
+    <g fill="none" stroke-width="2">
+        <path class="neural-path" stroke="#4285F4" d="M20,30 Q50,10 80,30">
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+        </path>
+        <path class="neural-path" stroke="#EA4335" d="M20,50 Q50,30 80,50">
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+        </path>
+        <path class="neural-path" stroke="#FBBC05" d="M20,70 Q50,50 80,70">
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+        </path>
+        <path class="neural-path" stroke="#34A853" d="M20,30 Q50,50 80,70">
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+        </path>
+        <path class="neural-path" stroke="#4285F4" d="M20,70 Q50,50 80,30">
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" begin="1.6s" repeatCount="indefinite"/>
+        </path>
+    </g>
+
+    <!-- Nodes -->
+    <g>
+        <circle class="node" cx="20" cy="30" r="4" fill="#4285F4">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="node" cx="20" cy="50" r="4" fill="#EA4335">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="node" cx="20" cy="70" r="4" fill="#FBBC05">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="node" cx="80" cy="30" r="4" fill="#34A853">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="node" cx="80" cy="50" r="4" fill="#4285F4">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1.6s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="node" cx="80" cy="70" r="4" fill="#EA4335">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="2s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Central Node with Gradient -->
+        <circle class="central-node" cx="50" cy="50" r="6">
+            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="fill" values="#4285F4;#EA4335;#FBBC05;#34A853;#4285F4" dur="4s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Rotating Outer Ring -->
+    <g transform="translate(50 50)">
+        <circle r="40" fill="none" stroke="url(#gradient)" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.3">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Add Inner Orbital Ring -->
+    <g transform="translate(50 50)">
+        <circle r="25" fill="none" stroke="url(#aiGradient)" stroke-width="0.3" stroke-dasharray="2,2" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="15s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Add Middle Orbital Ring -->
+    <g transform="translate(50 50)">
+        <circle r="35" fill="none" stroke="url(#cloudGradient)" stroke-width="0.3" stroke-dasharray="2,2" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="20s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Add Outer Orbital Ring -->
+    <g transform="translate(50 50)">
+        <circle r="45" fill="none" stroke="url(#mlopsGradient)" stroke-width="0.3" stroke-dasharray="2,2" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="25s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- AI/ML Specific Icons Layer -->
+    <g class="orbit" style="animation-duration: 18s;">
+        <g transform="translate(50,50)">
+            <!-- AI Brain -->
+            <path class="service-icon" fill="#EA4335" 
+                d="M-20,-35 q20,-15 40,0 q-20,15 -40,0" 
+                style="animation-delay: 0.2s"/>
+            
+            <!-- Neural Network Node -->
+            <circle class="service-icon" fill="#4285F4" cx="35" cy="0" r="3"
+                style="animation-delay: 0.4s"/>
+                
+            <!-- Deep Learning Layers -->
+            <path class="service-icon" fill="#FBBC05"
+                d="M20,30 l-5,-10 l10,0 z"
+                style="animation-delay: 0.6s"/>
+        </g>
+    </g>
+
+    <!-- Cloud Computing Layer -->
+    <g class="orbit" style="animation-duration: 22s; animation-direction: reverse;">
+        <g transform="translate(50,50)">
+            <!-- Server Icon -->
+            <rect class="service-icon" fill="#4285F4" x="-40" y="0" width="8" height="12" rx="1"
+                style="animation-delay: 0.8s"/>
+                
+            <!-- Cloud Storage -->
+            <path class="service-icon" fill="#34A853"
+                d="M15,-25 q10,-5 20,0 q5,-8 15,-5 q-5,10 -15,5 q-10,5 -20,0"
+                style="animation-delay: 1s"/>
+        </g>
+    </g>
+
+    <!-- MLOps Layer -->
+    <g class="orbit" style="animation-duration: 25s;">
+        <g transform="translate(50,50)">
+            <!-- Pipeline Icon -->
+            <path class="service-icon" fill="#FF6F00"
+                d="M-30,20 h15 v5 h-15 z m20,0 h15 v5 h-15 z"
+                style="animation-delay: 1.2s"/>
+                
+            <!-- Deployment Icon -->
+            <path class="service-icon" fill="#00A98F"
+                d="M25,-20 l8,8 l-8,8 l-8,-8 z"
+                style="animation-delay: 1.4s"/>
+        </g>
+    </g>
+
+    <!-- Add Orbital Layers with Distinct Domains -->
+    <g class="orbit" style="animation-duration: 18s;">
+        <!-- AI/ML Layer -->
+        <g transform="translate(50, 50)">
+            <g transform="rotate(0)">
+                <path class="service-icon" fill="url(#aiGradient)" d="M-20,-35 q20,-15 40,0 q-20,15 -40,0" 
+                    style="animation-delay: 0.2s"/>
+            </g>
+            <g transform="rotate(120)">
+                <circle class="service-icon" fill="#EA4335" cx="35" cy="0" r="3"
+                    style="animation-delay: 0.4s"/>
+            </g>
+            <g transform="rotate(240)">
+                <path class="service-icon" fill="#FBBC05" d="M20,30 l-5,-10 l10,0 z"
+                    style="animation-delay: 0.6s"/>
+            </g>
+        </g>
+    </g>
+
+    <g class="orbit" style="animation-duration: 22s; animation-direction: reverse;">
+        <!-- Cloud Computing Layer -->
+        <g transform="translate(50, 50)">
+            <g transform="rotate(60)">
+                <path class="service-icon" fill="url(#cloudGradient)" 
+                    d="M-25,0 q5,-10 15,-5 q5,-5 10,0 q5,-2 8,3 q-3,8 -10,5 q-5,5 -10,0 q-10,5 -13,-3"
+                    style="animation-delay: 2s"/>
+            </g>
+            <g transform="rotate(180)">
+                <path class="service-icon" fill="#4285F4" d="M10,15 l8,-8 l8,8 l-8,8 z"
+                    style="animation-delay: 2.5s"/>
+            </g>
+            <g transform="rotate(300)">
+                <rect class="service-icon" fill="#34A853" x="-4" y="-4" width="8" height="8"
+                    style="animation-delay: 3s"/>
+            </g>
+        </g>
+    </g>
+
+    <g class="orbit" style="animation-duration: 25s;">
+        <!-- MLOps Layer -->
+        <g transform="translate(50, 50)">
+            <g transform="rotate(30)">
+                <path class="service-icon" fill="url(#mlopsGradient)" 
+                    d="M-15,20 c-5,-5 5,-15 10,-10 c5,-5 15,5 10,10 z"
+                    style="animation-delay: 3s"/>
+            </g>
+            <g transform="rotate(150)">
+                <rect class="service-icon" fill="#FBBC05" x="-25" y="-15" width="10" height="10" rx="2"
+                    style="animation-delay: 3.5s"/>
+            </g>
+            <g transform="rotate(270)">
+                <path class="service-icon" fill="#FF6F00" d="M-30,20 h15 v5 h-15 z"
+                    style="animation-delay: 4s"/>
+            </g>
+        </g>
+    </g>
+
+    <!-- Add connecting orbital rings -->
+    <g transform="translate(50 50)">
+        <!-- Inner Ring - AI -->
+        <circle r="25" fill="none" stroke="url(#aiGradient)" stroke-width="0.3" stroke-dasharray="2,2" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="15s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Middle Ring - Cloud -->
+        <circle r="35" fill="none" stroke="url(#cloudGradient)" stroke-width="0.3" stroke-dasharray="2,2" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="20s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Outer Ring - MLOps -->
+        <circle r="45" fill="none" stroke="url(#mlopsGradient)" stroke-width="0.3" stroke-dasharray="2,2" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="25s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Add Orbital Layers with Category Labels -->
+    <g transform="translate(50 50)">
+        <!-- AI/ML Layer -->
+        <g transform="rotate(0)">
+            <path class="service-icon" fill="#EA4335" opacity="0.1"
+                d="M-8,-28 h16 v4 h-16 z">
+                <animate attributeName="opacity" values="0.1;0.2;0.1" dur="3s" repeatCount="indefinite"/>
+            </path>
+        </g>
+        
+        <!-- Cloud Layer -->
+        <g transform="rotate(120)">
+            <path class="service-icon" fill="#4285F4" opacity="0.1"
+                d="M-8,-38 h16 v4 h-16 z">
+                <animate attributeName="opacity" values="0.1;0.2;0.1" dur="3s" begin="1s" repeatCount="indefinite"/>
+            </path>
+        </g>
+        
+        <!-- MLOps Layer -->
+        <g transform="rotate(240)">
+            <path class="service-icon" fill="#FBBC05" opacity="0.1"
+                d="M-8,-48 h16 v4 h-16 z">
+                <animate attributeName="opacity" values="0.1;0.2;0.1" dur="3s" begin="2s" repeatCount="indefinite"/>
+            </path>
+        </g>
+    </g>
+
+    <!-- Add Orbital Distinction Lines -->
+    <g transform="translate(50 50)">
+        <circle r="30" fill="none" stroke="url(#aiGradient)" stroke-width="0.2" stroke-dasharray="1,3" opacity="0.1">
+            <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/>
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="15s" repeatCount="indefinite"/>
+        </circle>
+        
+        <circle r="40" fill="none" stroke="url(#cloudGradient)" stroke-width="0.2" stroke-dasharray="1,3" opacity="0.1">
+            <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" begin="1.33s" repeatCount="indefinite"/>
+            <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="20s" repeatCount="indefinite"/>
+        </circle>
+        
+        <circle r="50" fill="none" stroke="url(#mlopsGradient)" stroke-width="0.2" stroke-dasharray="1,3" opacity="0.1">
+            <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="4s" begin="2.66s" repeatCount="indefinite"/>
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="25s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Gradient Definition -->
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4285F4"/>
+            <stop offset="25%" style="stop-color:#EA4335"/>
+            <stop offset="50%" style="stop-color:#FBBC05"/>
+            <stop offset="75%" style="stop-color:#34A853"/>
+            <stop offset="100%" style="stop-color:#4285F4"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Background Circles -->
+    <g transform="translate(200, 200)">
+        <circle class="ai-circle" r="160" stroke="url(#aiGradient)" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="30s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="cloud-circle" r="120" stroke="url(#cloudGradient)" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="25s" repeatCount="indefinite"/>
+        </circle>
+        <circle class="tools-circle" r="80" stroke="url(#mlopsGradient)" opacity="0.2">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- AI/ML Frameworks -->
+    <g transform="translate(200, 200)">
+        <text class="framework-text" x="-70" y="-140" fill="#FF6F00" style="animation-delay: 0s;">TensorFlow</text>
+        <text class="framework-text" x="30" y="-120" fill="#EE4C2C" style="animation-delay: 0.5s;">PyTorch</text>
+        <text class="framework-text" x="-100" y="-100" fill="#FF9900" style="animation-delay: 1s;">Scikit-learn</text>
+        <text class="framework-text" x="50" y="-80" fill="#009688" style="animation-delay: 1.5s;">Keras</text>
+        
+        <!-- Additional AI Tools -->
+        <text class="framework-text" x="-60" y="-60" fill="#76B900" style="animation-delay: 2s;">NVIDIA CUDA</text>
+        <text class="framework-text" x="40" y="-40" fill="#150458" style="animation-delay: 2.5s;">NumPy</text>
+        <text class="framework-text" x="-80" y="-20" fill="#E31B45" style="animation-delay: 3s;">Pandas</text>
+    </g>
+
+    <!-- Cloud Tools -->
+    <g transform="translate(200, 200)">
+        <text class="tool-text" x="-130" y="0" fill="#FF9900" style="animation-delay: 0.2s;">AWS</text>
+        <text class="tool-text" x="-40" y="20" fill="#4285F4" style="animation-delay: 0.7s;">Google Cloud</text>
+        <text class="tool-text" x="60" y="0" fill="#0089D6" style="animation-delay: 1.2s;">Azure</text>
+        
+        <!-- Container Tech -->
+        <text class="tool-text" x="-90" y="40" fill="#2496ED" style="animation-delay: 1.7s;">Docker</text>
+        <text class="tool-text" x="20" y="40" fill="#326CE5" style="animation-delay: 2.2s;">Kubernetes</text>
+        <text class="tool-text" x="-60" y="60" fill="#0DB7ED" style="animation-delay: 2.7s;">Containers</text>
+    </g>
+
+    <!-- MLOps Tools -->
+    <g transform="translate(200, 200)">
+        <text class="tool-text" x="-110" y="80" fill="#00A98F" style="animation-delay: 0.4s;">MLflow</text>
+        <text class="tool-text" x="0" y="100" fill="#D24939" style="animation-delay: 0.9s;">Jenkins</text>
+        <text class="tool-text" x="70" y="80" fill="#FCA121" style="animation-delay: 1.4s;">GitLab</text>
+        <text class="tool-text" x="-80" y="120" fill="#F7B93E" style="animation-delay: 1.9s;">Airflow</text>
+        <text class="tool-text" x="40" y="120" fill="#89CFF0" style="animation-delay: 2.4s;">DVC</text>
+    </g>
+
+    <!-- Core Skills -->
+    <g transform="translate(200, 200)">
+        <text class="skill-text" x="-40" y="-180" fill="#4285F4" style="animation-delay: 0s;">AI Development</text>
+        <text class="skill-text" x="-50" y="160" fill="#34A853" style="animation-delay: 1s;">Cloud Solutions</text>
+        <text class="skill-text" x="100" y="-20" fill="#EA4335" style="animation-delay: 2s;">MLOps</text>
+    </g>
+
+    <!-- Center Text -->
+    <g transform="translate(200, 200)">
+        <text text-anchor="middle" class="skill-text" y="0" fill="url(#aiGradient)" style="font-size: 28px; animation: pulseText 2s infinite;">
+            <tspan x="0" dy="0">ADHIDEVX369</tspan>
+        </text>
+    </g>
+
+    <!-- Background Circles -->
+    <g transform="translate(200, 200)">
+        <circle r="180" fill="none" stroke="#4285F4" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.1">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="30s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="140" fill="none" stroke="#EA4335" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.1">
+            <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="25s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="100" fill="none" stroke="#FBBC05" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.1">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Main Title -->
+    <g transform="translate(200, 100)">
+        <text text-anchor="middle" class="tech-category" fill="url(#textGradient)" style="animation-delay: 0.2s" filter="url(#glow)">
+            <tspan x="0" dy="0" font-size="32">ADHIDEVX369</tspan>
+        </text>
+    </g>
+
+    <!-- AI Development Section -->
+    <g transform="translate(200, 160)">
+        <text text-anchor="middle" class="tech-category" fill="#4285F4" style="animation-delay: 0.5s">
+            <tspan x="0" dy="0">AI Development</tspan>
+        </text>
+        <g transform="translate(0, 30)">
+            <text text-anchor="middle" class="framework-text" fill="#FF6F00" style="animation-delay: 0.8s">TensorFlow</text>
+            <text text-anchor="middle" class="framework-text" fill="#EE4C2C" style="animation-delay: 1.1s" y="25">PyTorch</text>
+            <text text-anchor="middle" class="framework-text" fill="#FF9900" style="animation-delay: 1.4s" y="50">Scikit-learn</text>
+            <text text-anchor="middle" class="framework-text" fill="#76B900" style="animation-delay: 1.7s" y="75">CUDA</text>
+        </g>
+    </g>
+
+    <!-- Cloud Section -->
+    <g transform="translate(200, 280)">
+        <text text-anchor="middle" class="tech-category" fill="#34A853" style="animation-delay: 1s">
+            <tspan x="0" dy="0">Cloud Solutions</tspan>
+        </text>
+        <g transform="translate(0, 30)">
+            <text text-anchor="middle" class="framework-text" fill="#FF9900" style="animation-delay: 2s">AWS</text>
+            <text text-anchor="middle" class="framework-text" fill="#4285F4" style="animation-delay: 2.3s" y="25">Google Cloud</text>
+            <text text-anchor="middle" class="framework-text" fill="#0089D6" style="animation-delay: 2.6s" y="50">Azure</text>
+        </g>
+    </g>
+
+    <!-- MLOps Section -->
+    <g transform="translate(200, 380)">
+        <text text-anchor="middle" class="tech-category" fill="#EA4335" style="animation-delay: 1.5s">
+            <tspan x="0" dy="0">MLOps</tspan>
+        </text>
+    </g>
+
+    <!-- Rotating Framework Names -->
+    <g class="rotating-text" transform="translate(200, 200)">
+        <g transform="rotate(0)">
+            <text text-anchor="start" x="90" class="framework-text" fill="#2496ED" style="animation-delay: 3s">Docker</text>
+        </g>
+        <g transform="rotate(72)">
+            <text text-anchor="start" x="90" class="framework-text" fill="#326CE5" style="animation-delay: 3.2s">Kubernetes</text>
+        </g>
+        <g transform="rotate(144)">
+            <text text-anchor="start" x="90" class="framework-text" fill="#00A98F" style="animation-delay: 3.4s">MLflow</text>
+        </g>
+        <g transform="rotate(216)">
+            <text text-anchor="start" x="90" class="framework-text" fill="#F7B93E" style="animation-delay: 3.6s">Airflow</text>
+        </g>
+        <g transform="rotate(288)">
+            <text text-anchor="start" x="90" class="framework-text" fill="#89CFF0" style="animation-delay: 3.8s">DVC</text>
+        </g>
+    </g>
+
+    <!-- Pulsing Center Point -->
+    <circle cx="200" cy="200" r="4" fill="url(#textGradient)" class="pulse-text" filter="url(#glow)"/>
 </svg>
