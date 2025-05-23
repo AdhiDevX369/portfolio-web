@@ -2,6 +2,7 @@ const CACHE_NAME = 'adithya-portfolio-v1';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/offline.html',
   '/assets/css/styles.css',
   '/assets/css/swiper-bundle.min.css',
   '/assets/js/main.js',

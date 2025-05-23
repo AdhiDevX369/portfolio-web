@@ -91,7 +91,7 @@ const   contactForm = document.getElementById("contact_form"),
 const sendEmail = (e) => {
     e.preventDefault()
     // check empty
-    if(contactName.value==="" || contactEmail.value==="" || contactProject===""){}
+    if(contactName.value==="" || contactEmail.value==="" || contactProject.value===""){}
     else{
         // server id , template id , form id , public key (emailjs)
         emailjs.sendForm('service_pk8l6nt','template_ywrdbbp','#contact_form','baLvWpZOmZSmQ-fU4')
