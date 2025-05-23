@@ -1278,6 +1278,30 @@ text-align: center;
   }
 }
 
+/* Loader adjustments for standard mobile devices */
+@media screen and (min-width: 321px) and (max-width: 767px) {
+  .loader__letter {
+    font-size: 2rem; 
+  }
+
+  .loader__subtitle {
+    /* Relying on var(--h3-font-size) which is 1rem by default for this range, 
+       or explicitly set if needed, e.g., font-size: 1rem; */
+    font-size: var(--h3-font-size); 
+  }
+
+  .loader__tech-item {
+    /* Relying on var(--small-font-size) which is 0.813rem by default for this range,
+       or explicitly set if needed, e.g., font-size: var(--small-font-size); */
+    font-size: var(--small-font-size);
+    padding: 0.4rem 0.8rem; 
+  }
+
+  .loader__progress {
+    width: 220px; 
+  }
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 380px){

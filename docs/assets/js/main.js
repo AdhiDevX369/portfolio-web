@@ -190,17 +190,28 @@ sr.reveal(".links__content", {delay:400, interval:50})
 /*=============== LOADER ===============*/
 window.addEventListener('load', () => {
     const loader = document.querySelector('.loader');
-    
-    // Increase time to show full animation sequence with rotating tech icons
+    if (!loader) return; // Guard clause if loader element doesn't exist
+
+    let hideDelay = 6500; // Default delay
+
+    if (window.innerWidth <= 320) {
+        hideDelay = 4000; // Reduced animation time for very small devices
+    }
+    // Optional: Add another breakpoint for standard mobile if desired
+    // else if (window.innerWidth <= 767) { 
+    //     hideDelay = 5000; // Example: A mid-range delay for standard mobile
+    // }
+
     setTimeout(() => {
         loader.classList.add('loader--hidden');
         
+        // Use { once: true } to ensure the event listener is automatically removed after firing once.
         loader.addEventListener('transitionend', () => {
             if (document.body.contains(loader)) {
                 document.body.removeChild(loader);
             }
-        });
-    }, 6500); // Extended to 6.5 seconds to match the complete animation sequence
+        }, { once: true }); 
+    }, hideDelay);
 });
 
 /*=============== MOBILE OPTIMIZATIONS ===============*/
@@ -225,22 +236,6 @@ window.removeEventListener('scroll', scrollActive);
 window.removeEventListener('scroll', scrollUp);
 window.removeEventListener('scroll', scrollHeader);
 window.addEventListener('scroll', optimizedScrollHandler);
-
-// Optimize loader for mobile
-window.addEventListener('load', () => {
-    const loader = document.querySelector('.loader');
-    if (window.innerWidth <= 320) {
-        // Reduce animation time for smaller devices
-        setTimeout(() => {
-            loader.classList.add('loader--hidden');
-            if (document.body.contains(loader)) {
-                document.body.removeChild(loader);
-            }
-        }, 4000);
-    } else {
-        // ...existing loader code...
-    }
-});
 
 // Add fast click for mobile devices
 document.querySelectorAll('a, button, .nav__link, .services_card').forEach(element => {
