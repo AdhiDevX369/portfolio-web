@@ -230,7 +230,6 @@ window.addEventListener('load', () => {
     })
   }, 1200)
 })
-
 /*=============== MOBILE OPTIMIZATIONS ===============*/
 document.addEventListener('touchstart', function () {}, { passive: true })
 document.addEventListener('touchmove', function () {}, { passive: true })
@@ -265,7 +264,3 @@ document.querySelectorAll('main img').forEach((img) => {
   img.setAttribute('loading', 'lazy')
   img.setAttribute('decoding', 'async')
 })
-
-
-
-
