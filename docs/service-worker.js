@@ -1,15 +1,14 @@
 const CACHE_NAME = 'adithya-portfolio-v2';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/offline.html',
-  '/assets/css/styles.css',
-  '/assets/css/swiper-bundle.min.css',
-  '/assets/js/main.js',
-  '/assets/js/scrollreveal.min.js',
-  '/assets/js/swiper-bundle.min.js',
-  '/assets/img/profile.png',
-  'https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css'
+  './',
+  './index.html',
+  './assets/css/styles.css',
+  './assets/css/swiper-bundle.min.css',
+  './assets/js/main.js',
+  './assets/js/scrollreveal.min.js',
+  './assets/js/swiper-bundle.min.js',
+  './assets/img/profile.png',
+  './offline.html'
 ];
 
 // Install service worker
@@ -23,39 +22,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// Cache and return requests
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-
-        return fetch(event.request).then(
-          response => {
-            // Check if we received a valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            // Clone the response
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
-      })
-  );
-});
-
-// Update service worker
+// Network-first for HTML, cache-first for others
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
@@ -71,15 +38,36 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Handle offline fallback
 self.addEventListener('fetch', event => {
-  if (!navigator.onLine) {
+  const req = event.request;
+  const url = new URL(req.url);
+
+  // Only handle same-origin
+  if (url.origin !== location.origin) return;
+
+  if (req.mode === 'navigate') {
+    // Network-first for navigation requests
     event.respondWith(
-      caches.match(event.request).then(response => {
-        if (response) {
-          return response;
-        }
-        return caches.match('/offline.html');
+      fetch(req)
+        .then(res => {
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, resClone));
+          return res;
+        })
+        .catch(() => caches.match(req).then(r => r || caches.match('./offline.html')))
+    );
+  } else {
+    // Cache-first for static assets
+    event.respondWith(
+      caches.match(req).then(cached => {
+        return (
+          cached ||
+          fetch(req).then(res => {
+            const resClone = res.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(req, resClone));
+            return res;
+          })
+        );
       })
     );
   }
