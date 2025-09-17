@@ -410,41 +410,13 @@
         <div class="hero">
             <div class="hero__bg" aria-hidden="true"></div>
             <div class="hero__content home_data" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <h1 class="hero__title"><span itemprop="name">Adithya Bandara</span> — <span id="role_rotator" class="role">AI Engineer</span></h1>
+                <h1 class="hero__title"><span itemprop="name">Adithya Bandara</span> &mdash; <span id="role_rotator" class="role">AI Engineer</span></h1>
                 <p class="hero__subtitle" itemprop="jobTitle">Associate, AVENIR IT</p>
                 <p class="hero__summary" itemprop="description">I design and ship AI solutions across NLP, CV, and generative systems. Focused on reliable MLOps and scalable cloud deployments.</p>
-                <div class="hero__bullets" aria-label="What I do">
-                    <div class="bullet"><i class="ri-brain-line"></i> LLMs & Agents</div>
-                    <div class="bullet"><i class="ri-cloud-line"></i> Cloud MLOps</div>
-                    <div class="bullet"><i class="ri-shield-check-line"></i> Production-Ready</div>
-                </div>
                 <div class="hero__cta">
-                    <a id="whatsapp_cta" href="#" class="btn btn--whatsapp btn--xl" aria-label="WhatsApp direct message">
-                        <i class="ri-whatsapp-line"></i> WhatsApp Me
-                    </a>
-                    <a href="#projects" class="btn btn--ghost"><i class="ri-rocket-2-fill"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-primary interactive"><i class="ri-chat-3-line"></i> Contact Me</a>
+                    <a href="#projects" class="btn btn-outline interactive"><i class="ri-rocket-2-fill"></i> View Projects</a>
                 </div>
-                <div class="hero__quicklinks" aria-label="Quick links">
-                    <a class="ql" href="#projects"><i class="ri-image-line"></i> Projects</a>
-                    <a class="ql" href="#services"><i class="ri-briefcase-line"></i> Services</a>
-                    <a class="ql" href="#contact"><i class="ri-chat-3-line"></i> DM</a>
-                </div>
-                <div class="hero__note"><i class="ri-time-line"></i> Fastest response via WhatsApp</div>
-                <div class="hero__eyebrow">Tools I use</div>
-                <div class="hero__tools" aria-label="Tools I use">
-                    <div class="tool"><img src="assets/img/python-5.svg" alt="Python" width="28" height="28" /><span>Python</span></div>
-                    <div class="tool"><img src="assets/img/tensorflow.svg" alt="TensorFlow" width="28" height="28" /><span>TensorFlow</span></div>
-                    <div class="tool"><img src="assets/img/pytorch.svg" alt="PyTorch" width="28" height="28" /><span>PyTorch</span></div>
-                    <div class="tool"><img src="assets/img/aws-icon.svg" alt="AWS" width="28" height="28" /><span>AWS</span></div>
-                    <div class="tool"><img src="assets/img/azure-icon.svg" alt="Azure" width="28" height="28" /><span>Azure</span></div>
-                    <div class="tool"><img src="assets/img/google-cloud-icon.svg" alt="GCP" width="28" height="28" /><span>GCP</span></div>
-                </div>
-                
-                <ul class="hero__social">
-                    <li><a href="https://www.linkedin.com/in/adithya-bandara-a21a47246/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="ri-linkedin-box-line"></i></a></li>
-                    <li><a href="https://github.com/adhidevx369" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="ri-github-line"></i></a></li>
-                    <li><a href="https://adithyabandara.medium.com/" target="_blank" rel="noopener noreferrer" aria-label="Medium"><i class="ri-medium-line"></i></a></li>
-                </ul>
             </div>
             
             <a href="#about" class="scroll_hint" aria-label="Scroll to About"><i class="ri-arrow-down-line"></i></a>
@@ -488,8 +460,8 @@
                         </div>
 
                         <div class="about__cta">
-                            <a href="#projects" class="btn btn--primary"><i class="ri-rocket-2-fill"></i> Explore Projects</a>
-                            <a href="#contact" class="btn btn--ghost"><i class="ri-chat-3-line"></i> Hire Me</a>
+                            <a href="#projects" class="btn btn-primary interactive"><i class="ri-rocket-2-fill"></i> Explore Projects</a>
+                            <a href="#contact" class="btn btn-outline interactive"><i class="ri-chat-3-line"></i> Hire Me</a>
                         </div>
                     </div>
 
@@ -1045,23 +1017,30 @@
                         <!-- email -->
                         <div class="contact_data">
                             <span class="contact_data_title">Email</span>
-                            <a class="contact_data_info" id="email_link" href="mailto:adithyabandara69@gmail.com">adithyabandara69@gmail.com</a>
+                            <a class="btn btn-link interactive" id="email_link" href="mailto:adithyabandara69@gmail.com" data-label="button" aria-label="Send email">
+                                <i class="ri-mail-line" aria-hidden="true"></i>
+                                <span>Email</span>
+                            </a>
                         </div>
                         <!-- whatsapp -->
                         <div class="contact_data">
                             <span class="contact_data_title">Whatsapp</span>
                             <span class="contact_data_info" id="whatsapp_number_text">+94 712494420</span>
                             <a id="whatsapp_link" href="https://wa.me/94712494420?text=Hello! Adithya, I'm interested in your web portfolio, can we discuss more?"
-                                target="_blank" rel="noopener noreferrer" class="contact_button">
-                                Write me <i class="ri-arrow-right-fill"></i>
+                                target="_blank" rel="noopener noreferrer" class="btn btn-link interactive" aria-label="Open WhatsApp chat">
+                                <i class="ri-whatsapp-line" aria-hidden="true"></i>
+                                <span>WhatsApp</span>
+                                <i class="ri-external-link-line external" aria-hidden="true"></i>
                             </a>
                         </div>
                         <!-- messenger -->
                         <div class="contact_data">
                             <span class="contact_data_title">Messenger</span>
                             <span class="contact_data_info">Adithya Bandara</span>
-                            <a href="https://m.me/adithyabandara2001" target="_blank" rel="noopener noreferrer" class="contact_button">
-                                Write me <i class="ri-arrow-right-fill"></i>
+                            <a href="https://m.me/adithyabandara2001" target="_blank" rel="noopener noreferrer" class="btn btn-link interactive" aria-label="Open Messenger chat">
+                                <i class="ri-messenger-line" aria-hidden="true"></i>
+                                <span>Messenger</span>
+                                <i class="ri-external-link-line external" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -1093,7 +1072,7 @@
                         </div>
                         <p class="contact_message" id="contact_message"></p>
                         <!-- submit button -->
-                        <button type="submit" class="contact_button">Submit <i class="ri-send-plane-fill"></i></button>
+                        <button type="submit" class="btn btn-primary interactive">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1181,3 +1160,4 @@
 </body>
 
 </html>
+

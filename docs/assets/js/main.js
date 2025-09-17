@@ -177,7 +177,8 @@ const scrollHeader = () => {
 
 /*=============== SCROLL REVEAL ANIMATIONS ===============*/
 const sr = ScrollReveal({ origin: 'top', distance: '50px', duration: 2500, delay: 400 })
-sr.reveal('.home_data, .projects_container, .comments_container, .footer_container')
+// Let CSS handle hero entrance for a smoother, lighter animation
+sr.reveal('.projects_container, .comments_container, .footer_container')
 sr.reveal('.home_info', { delay: 600, origin: 'bottom', interval: 100 })
 sr.reveal('.skills_content:nth-child(1), .contact_content:nth-child(1)', { origin: 'left' })
 sr.reveal('.skills_content:nth-child(2), .contact_content:nth-child(2)', { origin: 'right' })
@@ -266,7 +267,10 @@ async function loadContactsFromMarkdown() {
       const emailA = document.getElementById('email_link')
       if (emailA) {
         emailA.setAttribute('href', `mailto:${map['email']}`)
-        emailA.textContent = map['email']
+        // If using a labeled button, keep the label and icon
+        if (!emailA.dataset.label) {
+          emailA.textContent = map['email']
+        }
       }
     }
 
@@ -313,13 +317,42 @@ function initRoleRotator(){
   if (!el) return
   const roles = ['AI Engineer', 'MLOps', 'Cloud AI']
   let i = 0
+
+  // Prefer Web Animations API for buttery-smooth crossfade
+  if (typeof el.animate === 'function') {
+    const ease = 'cubic-bezier(.2,0,0,1)'
+    const fadeOut = () => el.animate([
+      { opacity: 1, transform: 'translateY(0)' },
+      { opacity: 0, transform: 'translateY(6px)' }
+    ], { duration: 220, easing: ease, fill: 'forwards' })
+    const fadeIn = () => el.animate([
+      { opacity: 0, transform: 'translateY(-6px)' },
+      { opacity: 1, transform: 'translateY(0)' }
+    ], { duration: 280, easing: ease, fill: 'forwards' })
+
+    const tick = async () => {
+      try {
+        await fadeOut().finished
+      } catch(_) {}
+      i = (i + 1) % roles.length
+      el.textContent = roles[i]
+      try {
+        await fadeIn().finished
+      } catch(_) {}
+    }
+
+    setInterval(tick, 2600)
+    return
+  }
+
+  // Fallback: CSS transition using class toggle
   setInterval(() => {
     el.classList.add('is-fading')
     setTimeout(() => {
       i = (i + 1) % roles.length
       el.textContent = roles[i]
       requestAnimationFrame(() => el.classList.remove('is-fading'))
-    }, 200)
+    }, 240)
   }, 2600)
 }
 document.addEventListener('DOMContentLoaded', initRoleRotator)
