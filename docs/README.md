@@ -21,11 +21,10 @@ docs/
 ## Contact
 - GitHub: @adhidevx369
 - LinkedIn: Adithya Bandara
-- Portfolio: https://portfolio.adhidev369.live/
+- Portfolio: https://adithyabandara.com/
 
 ## Areas of Expertise
 - Artificial Intelligence / Machine Learning
 - Deep Learning (TensorFlow, PyTorch)
 - Cloud AI Solutions (AWS, Azure, GCP)
 - MLOps & LLMOps
-

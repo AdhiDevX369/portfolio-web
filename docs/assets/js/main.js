@@ -183,6 +183,13 @@ sr.reveal('.skills_content:nth-child(1), .contact_content:nth-child(1)', { origi
 sr.reveal('.skills_content:nth-child(2), .contact_content:nth-child(2)', { origin: 'right' })
 sr.reveal('.qualification_content, .services_card', { interval: 100 })
 sr.reveal('.links__content', { delay: 400, interval: 50 })
+sr.reveal('.exp__item', { distance: '40px', origin: 'left', interval: 120 })
+sr.reveal('.edu__item', { distance: '40px', origin: 'right', interval: 120 })
+
+/*=============== TIMELINE PROGRESS (IN-VIEW) ===============*/
+// timeline removed
+sr.reveal('.about__content', { distance: '40px', origin: 'left' })
+sr.reveal('.about__card', { distance: '40px', origin: 'right', delay: 200 })
 
 /*=============== LOADER ===============*/
 // Initialize Lottie loader and hide after short delay
@@ -217,6 +224,105 @@ const initLottieLoader = () => {
 }
 
 document.addEventListener('DOMContentLoaded', initLottieLoader)
+
+/*=============== CONTACTS.MD INTEGRATION ===============*/
+async function loadContactsFromMarkdown() {
+  try {
+    const res = await fetch('contacts.md', { cache: 'no-store' })
+    if (!res.ok) return
+    const text = await res.text()
+
+    const lines = text.split(/\r?\n/).filter(Boolean)
+    const map = {}
+    for (const line of lines) {
+      const [k, ...rest] = line.split(':')
+      if (!k || rest.length === 0) continue
+      const key = k.trim().toLowerCase()
+      const value = rest.join(':').trim()
+      map[key] = value
+    }
+
+    // Normalize whatsapp number to digits only for wa.me
+    const raw = map['whatsapp'] || ''
+    const digits = (raw.match(/\d+/g) || []).join('')
+    if (digits) {
+      const prefilled = encodeURIComponent("Hello! I'm interested in your work. Can we chat?")
+      const waLink = `https://wa.me/${digits}?text=${prefilled}`
+
+      const heroBtn = document.getElementById('whatsapp_cta')
+      if (heroBtn) heroBtn.setAttribute('href', waLink)
+
+      const waAnchor = document.getElementById('whatsapp_link')
+      if (waAnchor) waAnchor.setAttribute('href', waLink)
+
+      const waText = document.getElementById('whatsapp_number_text')
+      if (waText) waText.textContent = raw
+
+      const footerWa = document.getElementById('footer_whatsapp_link')
+      if (footerWa) footerWa.setAttribute('href', waLink)
+    }
+
+    if (map['email']) {
+      const emailA = document.getElementById('email_link')
+      if (emailA) {
+        emailA.setAttribute('href', `mailto:${map['email']}`)
+        emailA.textContent = map['email']
+      }
+    }
+
+    // Optionally update LinkedIn if present
+    if (map['linkedin']) {
+      const heroLinkedin = document.querySelector('.hero__social a[aria-label="LinkedIn"]')
+      if (heroLinkedin) heroLinkedin.setAttribute('href', map['linkedin'])
+      const footerLinkedin = document.querySelector('.footer_social a[aria-label="LinkedIn"]')
+      if (footerLinkedin) footerLinkedin.setAttribute('href', map['linkedin'])
+    }
+
+    // Substack link in Links section
+    if (map['substack']) {
+      const substack = document.getElementById('substack_link')
+      if (substack) substack.setAttribute('href', map['substack'])
+    }
+  } catch (e) {
+    // silently ignore if file not available
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadContactsFromMarkdown)
+
+/*=============== ABOUT LOTTIE ===============*/
+function initAboutLottie(){
+  const el = document.getElementById('about_lottie')
+  if (!el || !window.lottie) return
+  try {
+    window.lottie.loadAnimation({
+      container: el,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      // Distinct minimal tech background (different from loader)
+      path: 'https://assets8.lottiefiles.com/packages/lf20_ktwnwv5g.json'
+    })
+  } catch (e) {}
+}
+document.addEventListener('DOMContentLoaded', initAboutLottie)
+
+/*=============== HOME ROLE ROTATOR ===============*/
+function initRoleRotator(){
+  const el = document.getElementById('role_rotator')
+  if (!el) return
+  const roles = ['AI Engineer', 'MLOps', 'Cloud AI']
+  let i = 0
+  setInterval(() => {
+    el.classList.add('is-fading')
+    setTimeout(() => {
+      i = (i + 1) % roles.length
+      el.textContent = roles[i]
+      requestAnimationFrame(() => el.classList.remove('is-fading'))
+    }, 200)
+  }, 2600)
+}
+document.addEventListener('DOMContentLoaded', initRoleRotator)
 
 window.addEventListener('load', () => {
   const loader = document.querySelector('.loader')
@@ -261,6 +367,7 @@ document
 /*=============== IMAGE LOADING HINTS ===============*/
 // Lazy-load non-critical images and decode async to improve performance
 document.querySelectorAll('main img').forEach((img) => {
+  if (img.id === 'hero_avatar' || img.closest('.avatar')) return
   img.setAttribute('loading', 'lazy')
   img.setAttribute('decoding', 'async')
 })
