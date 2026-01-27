@@ -1213,11 +1213,11 @@ text-align: center;
   align-items: center;
   gap: .5rem;
   padding-bottom: .75rem;
-  border-bottom: 2px solid var(--first-color);
+  border-bottom: 2px solid var(--accent-color);
 }
 .projects__category-title i {
   font-size: 1.25rem;
-  color: var(--first-color);
+  color: var(--accent-color);
 }
 .project__card {
   display: flex;
@@ -1230,7 +1230,7 @@ text-align: center;
 }
 .project__card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px hsla(var(--hue), 30%, 10%, .15);
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
 }
 .project__icon {
   display: flex;
@@ -1238,13 +1238,13 @@ text-align: center;
   justify-content: center;
   width: 3.5rem;
   height: 3.5rem;
-  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt));
+  background: var(--accent-color);
   border-radius: .75rem;
   flex-shrink: 0;
 }
 .project__icon i {
   font-size: 1.5rem;
-  color: #fff;
+  color: #0e1114;
 }
 .project__info {
   display: flex;
@@ -1272,7 +1272,7 @@ text-align: center;
   align-items: center;
   gap: .5rem;
   font-size: var(--small-font-size);
-  color: var(--first-color);
+  color: var(--accent-color);
   font-weight: var(--font-medium);
   margin-top: .5rem;
   transition: gap .3s;
