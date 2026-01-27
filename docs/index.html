@@ -539,6 +539,27 @@
                             <h3 class="skills__name">Git</h3>
                             <span class="skills__subtitle">Intermediate</span>
                         </div>
+                        <div class="skills__data">
+                            <div class="skills__blob">
+                                <img src="assets/img/Rust.svg" alt="skills image">
+                            </div>
+                            <h3 class="skills__name">Rust</h3>
+                            <span class="skills__subtitle">Intermediate</span>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__blob">
+                                <img src="assets/img/Go.svg" alt="skills image">
+                            </div>
+                            <h3 class="skills__name">Go</h3>
+                            <span class="skills__subtitle">Intermediate</span>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__blob">
+                                <img src="assets/img/R.svg" alt="skills image">
+                            </div>
+                            <h3 class="skills__name">R</h3>
+                            <span class="skills__subtitle">Intermediate</span>
+                        </div>
                     </div>
                 </div>
                 <!--==================== SKILLS 2====================-->
@@ -608,6 +629,27 @@
                     <!-- Professional education timeline -->
                     <div class="edu">
                         <div class="edu__timeline">
+                            <!-- Item 0 - BSc -->
+                            <article class="edu__item">
+                                <div class="edu__marker">
+                                    <span class="edu__dot" aria-hidden="true"></span>
+                                    <span class="edu__line" aria-hidden="true"></span>
+                                </div>
+                                <div class="edu__card">
+                                    <header class="edu__header">
+                                        <h4 class="edu__degree">BSc (Hons) in Engineering (Computer Science)</h4>
+                                        <span class="edu__date">2026 — 2028 (Expected)</span>
+                                    </header>
+                                    <div class="edu__meta">
+                                        <span class="chip chip--school">University of Moratuwa · Sri Lanka</span>
+                                    </div>
+                                    <ul class="edu__bullets">
+                                        <li>Advanced computing architectures and software engineering principles.</li>
+                                        <li>Specialized AI modules and systems programming.</li>
+                                        <li>Rigorous curriculum bridging theory and practical implementations.</li>
+                                    </ul>
+                                </div>
+                            </article>
                             <!-- Item 1 -->
                             <article class="edu__item">
                                 <div class="edu__marker">
@@ -660,6 +702,31 @@
                     <!-- Modern vertical timeline -->
                     <div class="exp">
                         <div class="exp__timeline">
+                            <!-- Item 0 - Part-Time Lecturer -->
+                            <article class="exp__item">
+                                <div class="exp__marker">
+                                    <span class="exp__dot" aria-hidden="true"></span>
+                                    <span class="exp__line" aria-hidden="true"></span>
+                                </div>
+                                <div class="exp__card">
+                                    <header class="exp__header">
+                                        <h4 class="exp__role">Part-Time Lecturer</h4>
+                                        <span class="exp__date">Present</span>
+                                    </header>
+                                    <div class="exp__meta">
+                                        <span class="chip chip--company">IDET · Sri Lanka</span>
+                                    </div>
+                                    <ul class="exp__bullets">
+                                        <li>Delivering technical modules bridging theoretical CS and industry-standard development.</li>
+                                        <li>Mentoring aspiring developers in programming logic and software lifecycle management.</li>
+                                    </ul>
+                                    <div class="exp__tags">
+                                        <span class="chip">Teaching</span>
+                                        <span class="chip">Mentoring</span>
+                                        <span class="chip">Software Engineering</span>
+                                    </div>
+                                </div>
+                            </article>
                             <!-- Item 1 -->
                             <article class="exp__item">
                                 <div class="exp__marker">
@@ -864,81 +931,85 @@
 
         <!--==================== PROJECTS ====================-->
         <section class="projects section" id="projects">
-            <!-- ? projects header -->
             <h2 class="section__title">Projects</h2>
-            <span class="section__subtitle">My favorites</span>
-            <!-- ? project section -->
-            <div class="container section__border">
-                <div class="projects_container swiper">
-                    <div class="swiper-wrapper">
-                       <!-- ? project 1 -->
-                        <div class="projects_content swiper-slide">
-                            <img src="./assets/img/proj-1.png" alt="project image" class="projects_img">
-                            <div>
-                                <span class="projects_subtitle">AI</span>
-                                <h1 class="projects_title">Cancer Prediction Analysis</h1>
-                                <a href="https://github.com/AdhiDevX369/CancerPredictionApplication" target="_blank" rel="noopener noreferrer"
-                                    class="projects_button">
-                                    View Demo <i class="ri-arrow-right-line"></i>
+            <span class="section__subtitle">AI & Systems + Data & Automation</span>
+
+            <div class="projects__container container section__border">
+                <div class="projects__grid">
+                    <!-- AI & Systems Projects -->
+                    <div class="projects__category">
+                        <h3 class="projects__category-title"><i class="ri-brain-line"></i> AI & Systems</h3>
+                        
+                        <article class="project__card">
+                            <div class="project__icon">
+                                <i class="ri-robot-line"></i>
+                            </div>
+                            <div class="project__info">
+                                <h4 class="project__title">Rust-Exp: AI Chatbot</h4>
+                                <div class="project__stack">
+                                    <span class="chip">Rust</span>
+                                    <span class="chip">Ollama</span>
+                                </div>
+                                <p class="project__description">A high-performance, CRUD-based AI chatbot interface leveraging Rust's memory safety and speed to interact with local LLMs via Ollama.</p>
+                                <a href="https://github.com/AdhiDevX369/rust-exp" target="_blank" rel="noopener noreferrer" class="project__link">
+                                    View Project <i class="ri-github-line"></i>
                                 </a>
                             </div>
-                        </div>
-                         <!-- ? project 1 -->
-                         <div class="projects_content swiper-slide">
-                            <img src="./assets/img/proj%204.jpg" alt="project image" class="projects_img">
-                            <div>
-                                <span class="projects_subtitle">AI</span>
-                                <h1 class="projects_title">Yield Profitability Analysis</h1>
-                                <a href="https://github.com/AdhiDevX369/Acres" target="_blank" rel="noopener noreferrer"
-                                    class="projects_button">
-                                    View Demo <i class="ri-arrow-right-line"></i>
+                        </article>
+
+                        <article class="project__card">
+                            <div class="project__icon">
+                                <i class="ri-spy-line"></i>
+                            </div>
+                            <div class="project__info">
+                                <h4 class="project__title">MCP-S2xD: AI vs Human Detector</h4>
+                                <div class="project__stack">
+                                    <span class="chip">Go</span>
+                                </div>
+                                <p class="project__description">A specialized tool to differentiate between human-generated and AI-generated content. Built with Go for high concurrency and rapid processing.</p>
+                                <a href="https://github.com/AdhiDevX369/MCP-S2xD" target="_blank" rel="noopener noreferrer" class="project__link">
+                                    View Project <i class="ri-github-line"></i>
                                 </a>
                             </div>
-                        </div>
-                        <div class="projects_content swiper-slide">
-                            <img src="./assets/img/proj%20.5.png" alt="project image" class="projects_img">
-                            <div>
-                                <span class="projects_subtitle">Web</span>
-                                <h1 class="projects_title">Cashflowmate</h1>
-                                <a href="https://adhidevx369.github.io/CashFlowMateWeb/" target="_blank" rel="noopener noreferrer"
-                                    class="projects_button">
-                                    View Demo <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="projects_content swiper-slide">
-                            <img src="./assets/img/proj%203.png" alt="project image" class="projects_img">
-                            <div>
-                                <span class="projects_subtitle">Web</span>
-                                <h1 class="projects_title">Simple Website</h1>
-                                <a href="https://AdithyaBandara.github.io/AgoraInstitute" target="_blank" rel="noopener noreferrer"
-                                    class="projects_button">
-                                    View Demo <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- ? project 2 -->
-                        <div class="projects_content swiper-slide">
-                            <img src="./assets/img/proj%204.jpg" alt="project image" class="projects_img">
-                            <div>
-                                <span class="projects_subtitle">Web</span>
-                                <h1 class="projects_title">2D Js Game</h1>
-                                <a href="https://github.com/AdithyaBandara/Ghost-Hunter-JS-Game-" target="_blank" rel="noopener noreferrer"
-                                    class="projects_button">
-                                    View Demo <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
+                        </article>
                     </div>
-                    <!-- swiper arrows -->
-                    <div class="swiper-button-next">
-                        <i class="ri-arrow-right-s-fill"></i>
+
+                    <!-- Data & Automation Projects -->
+                    <div class="projects__category">
+                        <h3 class="projects__category-title"><i class="ri-database-2-line"></i> Data & Automation</h3>
+                        
+                        <article class="project__card">
+                            <div class="project__icon">
+                                <i class="ri-cloud-line"></i>
+                            </div>
+                            <div class="project__info">
+                                <h4 class="project__title">WetherR-Analysis</h4>
+                                <div class="project__stack">
+                                    <span class="chip">R</span>
+                                </div>
+                                <p class="project__description">A comprehensive weather data analysis suite. Cleaning, processing, and visualizing meteorological datasets to identify climate trends and patterns.</p>
+                                <a href="https://github.com/AdhiDevX369/WetherR-Analysis" target="_blank" rel="noopener noreferrer" class="project__link">
+                                    View Project <i class="ri-github-line"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="project__card">
+                            <div class="project__icon">
+                                <i class="ri-news-line"></i>
+                            </div>
+                            <div class="project__info">
+                                <h4 class="project__title">AclNews-go: NewsBot</h4>
+                                <div class="project__stack">
+                                    <span class="chip">Go</span>
+                                </div>
+                                <p class="project__description">An automated news distribution bot for social media. Scrapes and filters real-time news updates for streamlined information flow.</p>
+                                <a href="https://github.com/AdhiDevX369/AclNews-go" target="_blank" rel="noopener noreferrer" class="project__link">
+                                    View Project <i class="ri-github-line"></i>
+                                </a>
+                            </div>
+                        </article>
                     </div>
-                    <div class="swiper-button-prev">
-                        <i class="ri-arrow-left-s-fill"></i>
-                    </div>
-                    <!-- swiper dots -->
-                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>

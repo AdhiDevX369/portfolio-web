@@ -1193,6 +1193,103 @@ text-align: center;
   background-color: var(--title-color);
 }
 
+/* New Projects Grid Layout */
+.projects__container {
+  padding-block: 1rem;
+}
+.projects__grid {
+  display: grid;
+  gap: 3rem;
+}
+.projects__category {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.projects__category-title {
+  font-size: var(--h3-font-size);
+  color: var(--title-color);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding-bottom: .75rem;
+  border-bottom: 2px solid var(--first-color);
+}
+.projects__category-title i {
+  font-size: 1.25rem;
+  color: var(--first-color);
+}
+.project__card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background-color: var(--container-color);
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  transition: transform .3s, box-shadow .3s;
+}
+.project__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px hsla(var(--hue), 30%, 10%, .15);
+}
+.project__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt));
+  border-radius: .75rem;
+  flex-shrink: 0;
+}
+.project__icon i {
+  font-size: 1.5rem;
+  color: #fff;
+}
+.project__info {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.project__title {
+  font-size: var(--h3-font-size);
+  color: var(--title-color);
+  margin: 0;
+}
+.project__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.project__description {
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+}
+.project__link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  font-weight: var(--font-medium);
+  margin-top: .5rem;
+  transition: gap .3s;
+}
+.project__link:hover {
+  gap: .75rem;
+}
+.project__link i {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /*=============== TESTIMONIAL ===============*/
 .comments{
   position: relative;
